@@ -1,0 +1,17 @@
+CREATE TABLE `integradorprojeto`.`cursos` (
+  `idCursos` INT NOT NULL,
+  `Nome` VARCHAR(45) NULL,
+  `Vagas` INT NULL,
+  `Professor` VARCHAR(45) NULL,
+  `Disponibilidade` INT NULL,
+  `Carga Horaria` INT NULL,
+  PRIMARY KEY (`idCursos`));
+
+
+INSERT INTO IntegradorProjeto.cursos(idCursos,Nome,Vagas,Professor,Disponibilidade,CargaHoraria)
+VALUES(1, "Cientista de Dados",30,"Everton",300);
+VALUES(2,"Segurança do Trabalho",10,"Nailtoon",1,180);
+VALUES(3,"Manutenção automotiva",20,"Geraldo",1,1250);
+
+UPDATE integradorprojeto.cursos SET Nome = "Cientista de Dados" WHERE idCursos = 1;
+SELECT * FROM integradorprojeto.cursos;
