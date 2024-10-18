@@ -16,33 +16,13 @@ VALUES(3,"Manutenção automotiva",20,"Geraldo",1,1250);
 UPDATE integradorprojeto.cursos SET Nome = "Cientista de Dados" WHERE idCursos = 1;
 SELECT * FROM integradorprojeto.cursos;
 
-CREATE TABLE `integradorprojeto`.`cientista_de_dados` (
-  `idCientista_de_Dados` INT NOT NULL,
-  `Modalidade` VARCHAR(45) NULL,
+
+CREATE TABLE `integradorprojeto`.`turmas` (
+  `idTurmas` INT NOT NULL,
+  `Nome` VARCHAR(45) NULL,
+  `Modadlidade` VARCHAR(45) NULL,
   `Requisitos` VARCHAR(45) NULL,
   `Nível` VARCHAR(45) NULL,
   `Custo` VARCHAR(45) NULL,
   `Material` VARCHAR(45) NULL,
-  PRIMARY KEY (`idCientista_de_Dados`));
-
-
-CREATE TABLE `integradorprojeto`.`segurança_do_trabalho` (
-  `idSegurança_do_Trabalho` INT NOT NULL,
-  `Modalidade` VARCHAR(45) NULL,
-  `Requisitos` VARCHAR(45) NULL,
-  `Nível` VARCHAR(45) NULL,
-  `Custo` VARCHAR(45) NULL,
-  `Material` VARCHAR(45) NULL,
-  PRIMARY KEY (`idSegurança_do_Trabalho`));
-
-CREATE TABLE `integradorprojeto`.`manutenção_automotiva` (
-  `idManutenção_Automotiva` INT NOT NULL,
-  `Modalidade` VARCHAR(45) NULL,
-  `Requisitos` VARCHAR(45) NULL,
-  `Nível` VARCHAR(45) NULL,
-  `Custo` VARCHAR(45) NULL,
-  `Material` VARCHAR(45) NULL,
-  PRIMARY KEY (`idManutenção_Automotiva`));
-
-
-
+  PRIMARY KEY (`idTurmas`));
