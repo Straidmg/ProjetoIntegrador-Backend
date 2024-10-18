@@ -1,0 +1,5 @@
+get http://localhost:5191
+
+#########
+
+get http://localhost:5191/cursos
