@@ -1,40 +1,131 @@
 using System.Text.Json;
-using System.Data.SqlClient;
+using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddCors();
+builder.Services.AddCors(opcoes => {
+  opcoes.AddPolicy(name: "padrao", politica => {
+        politica.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
+
 var app = builder.Build();
+app.UseCors("padrao");
 
+List<Cursos> cursos = new List<Cursos>();
+List<Turmas> turmas = new List<Turmas>();
 
-
-/* app.MapGet("/cursos", CadastroCursos);
+app.MapGet("/cursos", CadastroCursos);
 app.MapGet("/turmas", CadastroTurmas);
- */
+app.MapGet("/cursos/", GetCursos);
+app.MapGet("/turmas/", GetTurmas);
+app.MapGet("/cursos/{idCursos}", GetCursos);
+app.MapGet("/turmas/{idTurmas}", GetTurmas);
+/* app.MapPost("/cursos", InserirCursos);
+app.MapPost("/turmas", InserirTurmas);
+app.MapPut("/cursos", AtualizarCursos);
+app.MapPut("/turmas", AtualizarTurmas); */
+app.MapDelete("/cursos/{idCursos}", DeletarCursos);
+app.MapDelete("/turmas/{idTurmas}", DeletarTurmas);
 
-/* IResult AtualizarCursos(Cursos cursos){
 
+/* IResult AtualizarCursos(Cursos cursos)
+{
     for (int i = 0; i < cursos.Count; i++)
     {
-        if (cursos[i].Id == cursos.idCursos){
-            cursos[i] = cursos;
-            return TypedResults.NoContent();
-        }
+       if (cursos[i].Id == cursos.idCursos)
+       {
+        cursos[i] = cursos;
+        return TypedResults.NoContent();
+       } 
+    }
+    return TypedResults.NotFound();
+}
+IResult AtualizarTurmas(Turmas turmas)
+{
+    for (int i = 0; i < turmas.Count; i++)
+    {
+       if (turmas[i].Id == turmas.idTurmas)
+       {
+        turmas[i] = turmas;
+        return TypedResults.NoContent();
+       } 
     }
     return TypedResults.NotFound();
 } */
 
-/* 
-IResult GetCursos()
+IResult DeletarCursos(int idCursos)
 {
-    return TypedResults.Ok(cursos);
+    for (int i = 0; i < cursos.Count; i++)
+    {
+    if (cursos[i].idCursos == idCursos)
+    {
+        cursos.RemoveAt(i);
+        return TypedResults.NoContent();
+    }    
+    }
+    return TypedResults.NotFound();
 }
-IResult GetTurmas()
+
+IResult DeletarTurmas(int idTurmas)
 {
-   return TypedResults.Ok(turmas);
+    for (int i = 0; i < turmas.Count; i++)
+    {
+    if (turmas[i].idTurmas == idTurmas)
+    {
+        turmas.RemoveAt(i);
+        return TypedResults.NoContent();
+    }    
+    }
+    return TypedResults.NotFound();
 }
- */
-/* void CadastroCursos ()
+/* IResult InserirCursos(Cursos cursos)
+{
+    cursos.Add(cursos);
+
+    return TypedResults.Created("/cursos", cursos);
+}
+IResult InserirTurmas(Turmas turmas)
+{
+    turmas.Add(turmas);
+
+    return TypedResults.Created("/turmas", turmas);
+} */
+
+IResult GetCursos(int id)
+{
+    foreach (Cursos cursos in cursos)
+    {
+        if (cursos.idCursos == id)
+        {
+            return TypedResults.Ok(cursos);
+        }
+    }
+
+    return TypedResults.NotFound();
+}
+IResult GetTurmas(int id)
+{
+    foreach (Turmas turmas in turmas)
+    {
+        if (turmas.idTurmas == id)
+        {
+            return TypedResults.Ok(turmas);
+        }
+    }
+
+    return TypedResults.NotFound();
+}
+
+
+
+
+
+
+void CadastroCursos ()
 {
     JsonSerializerOptions options = new JsonSerializerOptions();
     options.WriteIndented = true;
@@ -51,7 +142,7 @@ void CadastroTurmas ()
     string json = JsonSerializer.Serialize(turmas);
     string caminho2 = $"{Environment.CurrentDirectory}\\json\\turmas.json";
     File.WriteAllText(caminho2, json);
-} */
+}
 
 void ListarTurmas ()
 {

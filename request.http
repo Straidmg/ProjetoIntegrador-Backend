@@ -2,10 +2,47 @@ get http://localhost:5191
 
 #########
 
-get http://localhost:5191/cursos
+##########################
+GET http://localhost:5191/cursos
+
+##########################
+POST http://localhost:5191/cursos
+Content-Type: application/json
 
 
-##########
+###########################
+DELETE http://localhost:5191/cursos
+####################################
+PUT http://localhost:5191/cursos
+Content-Type: application/json
+
+{
+"idCursos":1,
+"Nome":"Cientista de Dados",
+"Vagas":20,
+"Professor":"Everton",
+"Dispon":true,
+"CargaH":230},
+
+{"idCursos":2,
+"Nome":"Seguran\u00E7a de Trabalho",
+"Vagas":40,
+"Professor":"Nailton",
+"Dispon":false,
+"CargaH":430},
+
+{"idCursos":3,
+"Nome":"Manuten\u00E7\u00E3o Atomotiva",
+"Vagas":10,
+"Professor":"Geraldo",
+"Dispon":true,
+"CargaH":500},
+
+###################################
+
+GET http://localhost:5191/turmas
 
 
-get http://localhost:5191/turmas
+
+
+
