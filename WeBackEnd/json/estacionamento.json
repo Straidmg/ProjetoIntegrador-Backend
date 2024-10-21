@@ -1,0 +1,9 @@
+{
+"id": 1,
+"placa": "412423432",
+"ano": 2024,
+"modelo": "carro",
+"marca": "marca boa",
+"horaChegada": 17,
+"mensalista": true
+}

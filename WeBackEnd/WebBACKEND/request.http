@@ -1,0 +1,42 @@
+GET http://localhost:5261/carro
+
+###########################
+
+GET http://localhost:5261
+
+##########################
+GET http://localhost:5261/carro/2
+
+##########################
+POST http://localhost:5261/carro
+Content-Type: application/json
+
+{
+"id": 3,
+"placa": "11111111",
+"ano": 2022,
+"modelo": "bolado",
+"marca": "marca mais ou menos",
+"horaChegada": 11,
+"mensalista": true
+}
+###########################
+DELETE http://localhost:5261/carro/2
+####################################
+PUT http://localhost:5261/carro
+Content-Type: application/json
+
+
+{
+"id": 1,
+"placa": "222222",
+"ano": 2026,
+"modelo": "novo carro",
+"marca": "marca ruim",
+"horaChegada": 22,
+"mensalista": false
+}
+
+###################################
+
+GET http://localhost:5261/clientes
