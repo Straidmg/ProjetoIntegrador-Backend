@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="script.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function clicou() {
+            let lista = document.getElementsByClassName("titulo");
+            lista[0].innerHTML = "<em> Nova aula</em>";
+        }
+        function mouseover() {
+            let elements = document.getElementsByTagName("div");
+            elements[0].style.backgroundColor = "blue";
+            console.long("mouseover");
+        }
+
+        function mouseout() {
+            let elements = document.getElementsByTagName("div");
+            elements[0].style.backgroundColor = "green";
+            console.log("mouseout");
+        }
+    </script>
+</head>
+<body>
+    <h1 id="titulo" class="titulo">Aula12 = JavaScript</h1>
+    <button onclick="clicou()">Clique Aqui</button>
+    <div onclick="clicou()" onmouseout="mouseout()" mouseover="mouseover" style="background-color:aqua;width: 100px;height: 100px"></div>
+    
+</body>
+</html>
