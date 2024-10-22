@@ -18,44 +18,47 @@ app.UseCors("padrao");
 List<Cursos> cursos = new List<Cursos>();
 List<Turmas> turmas = new List<Turmas>();
 
+
+
+
+
+app.MapGet("/", ListarCursos);
 app.MapGet("/cursos", CadastroCursos);
 app.MapGet("/turmas", CadastroTurmas);
-app.MapGet("/cursos/", GetCursos);
-app.MapGet("/turmas/", GetTurmas);
 app.MapGet("/cursos/{idCursos}", GetCursos);
 app.MapGet("/turmas/{idTurmas}", GetTurmas);
-/* app.MapPost("/cursos", InserirCursos);
+app.MapPost("/cursos", InserirCursos);
 app.MapPost("/turmas", InserirTurmas);
 app.MapPut("/cursos", AtualizarCursos);
-app.MapPut("/turmas", AtualizarTurmas); */
+app.MapPut("/turmas", AtualizarTurmas);
 app.MapDelete("/cursos/{idCursos}", DeletarCursos);
 app.MapDelete("/turmas/{idTurmas}", DeletarTurmas);
 
 
-/* IResult AtualizarCursos(Cursos cursos)
+IResult AtualizarCursos(Cursos curso)
 {
     for (int i = 0; i < cursos.Count; i++)
     {
-       if (cursos[i].Id == cursos.idCursos)
+       if (cursos[i].idCursos == curso.idCursos)
        {
-        cursos[i] = cursos;
+        cursos[i] = curso;
         return TypedResults.NoContent();
        } 
     }
     return TypedResults.NotFound();
 }
-IResult AtualizarTurmas(Turmas turmas)
+IResult AtualizarTurmas(Turmas turma)
 {
     for (int i = 0; i < turmas.Count; i++)
     {
-       if (turmas[i].Id == turmas.idTurmas)
+       if (turmas[i].idTurmas == turma.idTurmas)
        {
-        turmas[i] = turmas;
+        turmas[i] = turma;
         return TypedResults.NoContent();
        } 
     }
     return TypedResults.NotFound();
-} */
+}
 
 IResult DeletarCursos(int idCursos)
 {
@@ -82,18 +85,18 @@ IResult DeletarTurmas(int idTurmas)
     }
     return TypedResults.NotFound();
 }
-/* IResult InserirCursos(Cursos cursos)
+IResult InserirCursos(Cursos curso)
 {
-    cursos.Add(cursos);
+    cursos.Add(curso);
 
-    return TypedResults.Created("/cursos", cursos);
+    return TypedResults.Created("/cursos", curso);
 }
-IResult InserirTurmas(Turmas turmas)
+IResult InserirTurmas(Turmas turma)
 {
-    turmas.Add(turmas);
+    turmas.Add(turma);
 
-    return TypedResults.Created("/turmas", turmas);
-} */
+    return TypedResults.Created("/turmas", turma);
+}
 
 IResult GetCursos(int id)
 {
@@ -192,6 +195,8 @@ void ListarCursos () {
 
         Console.WriteLine($"{id} - {nome_curso} - {vagas} - {professor} - {Dispon} - {cargaH}");
 
+        //List<Cursos> cursos1 = new List<Cursos>();
+        
       }
     } catch (MySqlException ex) {
         Console.WriteLine(ex);
